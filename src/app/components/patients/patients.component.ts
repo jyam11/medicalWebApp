@@ -9,19 +9,18 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 })
 export class PatientsComponent implements OnInit {
 
+  patients: Observable<any> | undefined;
+  patientsCollection: AngularFirestoreCollection<'Patients'> | undefined;
+  
   constructor(public firestore: AngularFirestore) { }
 
   ngOnInit(): void { 
-    this.patientList();
+    this.currentPatients();
   }
-  
-  patients: Observable<any> | undefined;
-  patientsCollection: AngularFirestoreCollection<'Patients'> | undefined;
 
-  patientList() {
+  currentPatients() {
     this.patientsCollection = this.firestore.collection('Patients');
     this.patients = this.patientsCollection.valueChanges();
   }
-
 
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { PatientsService } from 'src/app/services/patients.service';
 
@@ -9,6 +9,7 @@ import { PatientsService } from 'src/app/services/patients.service';
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent {
+  @Input() patientName = ''
 
   constructor(private patientsService: PatientsService) {}
 
